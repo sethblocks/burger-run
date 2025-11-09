@@ -22,4 +22,6 @@ Although the building is based on a random picture of a McDonalds I found online
 
 On the "Congrats" screen, the little emoji is a traced version of this photo:<img width="225" height="225" alt="image" src="https://github.com/user-attachments/assets/c5c7de29-15d3-4573-a1d1-5f623aaf94be" />
 
+For the health counter, I wrote my own number display code inspired by [Moe-Counter by journey-ad](https://github.com/journey-ad/Moe-Counter) also using custom numbers to match the theme
+
 **ZERO AI** was used for any portion of the development
