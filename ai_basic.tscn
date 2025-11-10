@@ -1,0 +1,180 @@
+[gd_scene load_steps=14 format=3 uid="uid://sdeyu187uwgp"]
+
+[ext_resource type="Script" uid="uid://b3qxsck2p8ni0" path="res://ai_basic.gd" id="1_fpyki"]
+[ext_resource type="Texture2D" uid="uid://rg07qi88rlfx" path="res://burger_mayo.png" id="2_w13pf"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_h2yge"]
+friction = 0.7
+rough = true
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7mycd"]
+size = Vector2(67.00001, 16)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fpyki"]
+radius = 15.675003
+height = 57.350006
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_272bh"]
+radius = 14.175003
+height = 48.350006
+
+[sub_resource type="Animation" id="Animation_7mycd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../AI_basic/BurgerMayo:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2.40625, 2.40625)]
+}
+
+[sub_resource type="Animation" id="Animation_lquwl"]
+resource_name = "die_0"
+length = 0.075
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../AI_basic/BurgerMayo:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.07),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(2.40625, 2.40625), Vector2(4, 4), Vector2(1e-05, 1e-05)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_272bh"]
+_data = {
+&"RESET": SubResource("Animation_7mycd"),
+&"die_0": SubResource("Animation_lquwl")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_272bh"]
+
+[sub_resource type="Animation" id="Animation_fpyki"]
+resource_name = "float"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BurgerMayo:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -10), Vector2(0, 10)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("top:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -10), Vector2(0, 10)]
+}
+
+[sub_resource type="Animation" id="Animation_w13pf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BurgerMayo:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -10)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("top:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -10)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g3d6s"]
+_data = {
+&"RESET": SubResource("Animation_w13pf"),
+&"float": SubResource("Animation_fpyki")
+}
+
+[node name="AI_basic" type="RigidBody2D"]
+physics_material_override = SubResource("PhysicsMaterial_h2yge")
+lock_rotation = true
+contact_monitor = true
+max_contacts_reported = 1
+script = ExtResource("1_fpyki")
+metadata/speed = 750.0
+metadata/damage = 5.0
+
+[node name="eside" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="eside"]
+position = Vector2(0.5, -6)
+shape = SubResource("RectangleShape2D_7mycd")
+
+[node name="BurgerMayo" type="Sprite2D" parent="."]
+position = Vector2(0, -10)
+scale = Vector2(2.40625, 2.40625)
+texture = ExtResource("2_w13pf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.32499695, 3)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_fpyki")
+
+[node name="top" type="Area2D" parent="."]
+position = Vector2(0, -10)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="top"]
+position = Vector2(0.17500305, -16)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_272bh")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_272bh")
+}
+
+[node name="fall_l" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="fall_l"]
+position = Vector2(48, 32)
+shape = SubResource("RectangleShape2D_272bh")
+
+[node name="fall_r" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="fall_r"]
+position = Vector2(-48, 32)
+shape = SubResource("RectangleShape2D_272bh")
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_g3d6s")
+}
+
+[connection signal="body_entered" from="eside" to="." method="_on_eside_body_entered"]
+[connection signal="body_entered" from="top" to="." method="_on_top_body_entered"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="body_exited" from="fall_l" to="." method="_on_fall_l_body_exited"]
+[connection signal="body_exited" from="fall_r" to="." method="_on_fall_r_body_exited"]

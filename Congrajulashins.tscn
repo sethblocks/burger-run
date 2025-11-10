@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://be3fqnagjsa4a"]
+
+[ext_resource type="Texture2D" uid="uid://cre1vdv3dimmi" path="res://picshur.png" id="1_dq0c7"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_8kct0"]
+size = Vector3(100, 100, 1)
+
+[sub_resource type="Gradient" id="Gradient_hfggu"]
+colors = PackedColorArray(0.23921569, 0.29411766, 0.44705883, 1, 0.80784315, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_vq7ra"]
+gradient = SubResource("Gradient_hfggu")
+width = 128
+height = 128
+fill_from = Vector2(0.7453704, 0.5509259)
+
+[sub_resource type="LabelSettings" id="LabelSettings_l05ow"]
+font_size = 161
+
+[node name="Congrajulashins" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+position = Vector2(576.99994, 320)
+scale = Vector2(11.639376, 7.706016)
+mesh = SubResource("BoxMesh_8kct0")
+texture = SubResource("GradientTexture2D_vq7ra")
+
+[node name="Picshur" type="Sprite2D" parent="."]
+position = Vector2(547, 316)
+scale = Vector2(2.25, 2.25)
+texture = ExtResource("1_dq0c7")
+
+[node name="scor" type="Label" parent="."]
+layout_mode = 0
+offset_left = 583.0
+offset_top = 263.0
+offset_right = 767.0
+offset_bottom = 484.0
+text = "67"
+label_settings = SubResource("LabelSettings_l05ow")

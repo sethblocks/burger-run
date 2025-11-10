@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://8eophon71dpo"]
+
+[ext_resource type="Texture2D" uid="uid://bacbklerpsxsx" path="res://particle2.png" id="1_svubg"]
+[ext_resource type="Script" uid="uid://l24ka0gepgkp" path="res://despawn_anim.gd" id="2_b6jur"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_b6jur"]
+particle_flag_disable_z = true
+initial_velocity_min = -75.0
+initial_velocity_max = 75.0
+angular_velocity_min = -86.08002
+angular_velocity_max = 62.619984
+gravity = Vector3(0, 98, 0)
+
+[node name="GPUParticles2D" type="GPUParticles2D"]
+amount = 64
+texture = ExtResource("1_svubg")
+process_material = SubResource("ParticleProcessMaterial_b6jur")
+script = ExtResource("2_b6jur")

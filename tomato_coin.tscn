@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4w5ovqkqoy74"]
+
+[ext_resource type="Texture2D" uid="uid://ucy1d47ixw1h" path="res://tomato.png" id="1_gbeir"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_074og"]
+radius = 14.0
+
+[node name="CircleCoin" type="Sprite2D"]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_gbeir")
+
+[node name="tomatocoinbody" type="StaticBody2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tomatocoinbody"]
+shape = SubResource("CircleShape2D_074og")

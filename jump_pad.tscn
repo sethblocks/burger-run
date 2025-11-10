@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://ddl5qfvgqrkdc"]
+
+[ext_resource type="Texture2D" uid="uid://dblgjg3eenotd" path="res://smile.png" id="1_526ql"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_cegan"]
+a = Vector2(35, -24)
+b = Vector2(-34, -16)
+
+[node name="jumpPad" type="StaticBody2D"]
+
+[node name="jumppad" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(695, -134)
+scale = Vector2(2, 1)
+texture = ExtResource("1_526ql")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(695, -131)
+scale = Vector2(1, 0.125)
+shape = SubResource("SegmentShape2D_cegan")

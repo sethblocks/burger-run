@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8ia2bfu3sq43"]
+
+[ext_resource type="Script" uid="uid://2p6eiheq7sqo" path="res://moe.gd" id="1_ntfoh"]
+
+[node name="Boorunum" type="Node2D"]
+script = ExtResource("1_ntfoh")
+metadata/font_dir = "burger_num"
+metadata/value = 0

@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3e17qciau570"]
+
+[ext_resource type="Texture2D" uid="uid://dblgjg3eenotd" path="res://smile.png" id="1_laror"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_ai465"]
+a = Vector2(35, -24)
+b = Vector2(-34, -16)
+
+[node name="Jumppad" type="Node2D"]
+
+[node name="jumpPad" type="StaticBody2D" parent="."]
+
+[node name="jumppad" type="Sprite2D" parent="jumpPad"]
+z_index = 1
+scale = Vector2(2, 1)
+texture = ExtResource("1_laror")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="jumpPad"]
+scale = Vector2(1, 0.125)
+shape = SubResource("SegmentShape2D_ai465")
